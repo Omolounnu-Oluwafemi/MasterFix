@@ -1,14 +1,15 @@
 {
   "expo": {
-    "name": "TestApp",
-    "slug": "TestApp",
+    "name": "MasterFix",
+    "slug": "MasterFix",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/MasterfixLOGO.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/images/MasterfixLOGO.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -25,7 +26,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.omolounnuoluwafemi.MasterFix"
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
@@ -33,6 +35,11 @@
     "plugins": [
       "expo-font",
       "expo-asset"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "c46aa8e2-48ef-4d47-b9a5-a1ad09513b6e"
+      }
+    }
   }
 }
