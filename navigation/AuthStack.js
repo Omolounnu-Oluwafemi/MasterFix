@@ -7,6 +7,13 @@ import ConfirmPhone from "../screens/Auth/Register/ConfirmPhone";
 import AccountType from "../screens/Auth/Register/AccountType";
 import ArtisanDetails from "../screens/Auth/Register/ArtisanDetails";
 import UserDetails from "../screens/Auth/Register/UserDetails";
+import WelcomeBack from "../screens/Auth/Login/WelcomeBack";
+import VerificationChoice from "../screens/Auth/Login/VerificationChoice";
+import VerifyCode from "../screens/Auth/Login/VerifyCode";
+import NewPassword from "../screens/Auth/AccountRecovery/NewPassword";
+import RecoveryCode from "../screens/Auth/AccountRecovery/RecoveryCode";
+import ResetPassword from "../screens/Auth/AccountRecovery/ResetPassword";
+import ResetSuccess from "../screens/Auth/AccountRecovery/ResetSuccess";
 import Home from "../screens/Home/Home"
 
 const Stack = createStackNavigator();
@@ -22,8 +29,14 @@ export default function AuthStack() {
       <Stack.Screen name="AccountType" component={AccountType} />
       <Stack.Screen name="ArtisanDetails" component={ArtisanDetails} />
       <Stack.Screen name="UserDetails" component={UserDetails} />
+      <Stack.Screen name="WelcomeBack" component={WelcomeBack} />
+      <Stack.Screen name="VerificationChoice" component={VerificationChoice} />
+      <Stack.Screen name="VerifyCode" component={VerifyCode} />
+      <Stack.Screen name="ResetPassword" component={ResetPassword} />
+      <Stack.Screen name="RecoveryCode" component={RecoveryCode} />
+      <Stack.Screen name="NewPassword" component={NewPassword} />
+      <Stack.Screen name="ResetSuccess" component={ResetSuccess} />
       <Stack.Screen name="HomeScreen" component={Home} />
-      {/* Add more auth/onboarding screens here */}
     </Stack.Navigator>
   );
 }
