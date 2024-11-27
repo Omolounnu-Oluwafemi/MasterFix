@@ -3,7 +3,9 @@ import React from 'react';
 import { Text } from '../../components/Themed';
 import BackButton from '../../components/BackButton';
 import CustomButton from '../../components/CustomButton';
+
 const logo = require('./../../assets/images/MasterfixLOGO.png');
+
 import { useTheme } from "@react-navigation/native";
 
 const LandingPage = ({ navigation }) => {
