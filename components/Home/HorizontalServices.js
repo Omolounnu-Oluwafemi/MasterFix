@@ -19,7 +19,7 @@ const HorizontalServices = () => {
   return (
     <>
       <Text style={styles.sectionTitle}>Services</Text>
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.horizontalScroll}>
+      <ScrollView horizontal showsHorizontalScrollIndicator={true} style={styles.horizontalScroll}>
         {Object.keys(serviceImages).map((service, index) => (
             <TouchableOpacity key={index} style={styles.serviceItem}>
                 <View style={styles.serviceIcon}>
@@ -28,7 +28,7 @@ const HorizontalServices = () => {
             <Text style={styles.serviceText}>{service}</Text>
           </TouchableOpacity>
         ))}
-          </ScrollView>
+      </ScrollView>
           <View style={styles.scrollContainer}>
               <Text style={styles.scroll}>Slide</Text>  
               <AntDesign name="right" size={18} color="#7C7C7F" />
@@ -47,7 +47,9 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   serviceItem: {
-      alignItems: 'center',
+    alignItems: 'center',
+    gap: 10,
+    paddingBottom: 5
   },
   serviceIcon: {
     backgroundColor: '#000',
@@ -66,12 +68,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     textAlign: 'center',
   },
-    scrollContainer: {
-        width: "17%",
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        marginTop: 10,
-        marginLeft: '83%'
+  scrollContainer: {
+    width: "17%",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 10,
+    marginLeft: '83%'
   },
   scroll: {
     fontSize: 13,

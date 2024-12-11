@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Image, TextInput, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, TextInput, ScrollView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { FontAwesome, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
+import { FontAwesome, Ionicons, MaterialCommunityIcons, MaterialIcons, AntDesign } from '@expo/vector-icons';
 import { useTheme } from "@react-navigation/native";
 import HorizontalServices from '../../components/Home/HorizontalServices';
 import TopExperts from '../../components/Home/TopExperts';
 import TopCategories from '../../components/Home/TopCategories';
+import VideoPlayer from '../../components/Home/VideoPlayer';
+import Testimonials from '../../components/Home/Testimonials';
 
 const HomeScreen = ({ navigation }) => {
   const [firstName, setFirstName] = useState('');
@@ -41,7 +43,7 @@ const HomeScreen = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false} >
       {/* Top Bar */}
       <View style={styles.locations}>
@@ -85,29 +87,15 @@ const HomeScreen = ({ navigation }) => {
       
       {/* How It Works */}
       <Text style={styles.sectionTitle}>How It Works</Text>
-      <TouchableOpacity style={styles.videoContainer}>
-        <Image source={require('../../assets/images/MasterfixLOGO.png')} style={styles.videoThumbnail} />
-        <Ionicons name="play-circle" size={64} color="white" style={styles.playIcon} />
-      </TouchableOpacity>
+      <VideoPlayer />
 
       <TopExperts />
-      
-      {/* Testimonials */}
-      <Text style={styles.sectionTitle}>Testimonies</Text>
-      <View style={styles.testimonials}>
-        <View style={styles.testimonialCard} />
-        <View style={styles.testimonialCard} />
-      </View>
+      <Testimonials/>
 
       {/* Footer */}
-      <Text style={styles.footerText}>Mail: lorem.ipsom@mail.com</Text>
-      
-      <TouchableOpacity style={styles.button} onPress={handleLogout}>
-        <Text style={styles.buttonText}>Logout now</Text>
-      </TouchableOpacity>
-
+      <Text style={styles.footerText}><Text style={styles.mail}>Mail:</Text> lorem.ipsom@mail.com</Text>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -158,49 +146,6 @@ const styles = StyleSheet.create({
   subName: {
     color: '#FFC12E'
   },
-  bannerContainer:{
-    height: '20%',
-    marginTop: 16,
-  },
-  slide: {
-    flexDirection: 'row',
-    paddingVertical: '8%',
-    borderRadius: 15,
-    overflow: 'visible',
-    position: 'relative', 
-  },
-  slideText: {
-    color: '#fff',
-    fontSize: 16,
-    width: '70%',
-    fontWeight: 'bold',
-    textAlign: "left",
-    paddingLeft: '5%',
-    position: 'relative',
-  },
-  bannerImage: {
-    width: '30%',
-    height: '400%',
-    resizeMode: 'contain',
-    marginTop: 20, 
-    alignSelf: 'flex-end',
-    position: 'relative',
-    bottom: 0,
-    // transform: [{ translateY: -100 }], 
-    zIndex: 100,
-  },
-  dotStyle: {
-    backgroundColor: '#888',
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-  },
-  activeDotStyle: {
-    backgroundColor: '#007bff',
-    width: 10,
-    height: 10,
-    borderRadius: 5,
-  },
   searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -224,48 +169,15 @@ const styles = StyleSheet.create({
     marginVertical: 16,
     color: '#444446'
   },
-  categoriesGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    gap: 16
-  },
-  categoryCard: {
-    backgroundColor: '#f0f0f0',
-    padding: 16,
-    borderRadius: 8
-  },
-  categoryText: {
-    textAlign: 'center',
-    fontSize: 14
-  },
-  button: {
-    backgroundColor: 'red',
-    paddingVertical: 15,
-    paddingHorizontal: 40,
-    borderRadius: 8,
-  },
-  buttonText: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  testimonials: {
-    flexDirection: 'row',
-    gap: 16,
-    marginVertical: 16
-  },
-  testimonialCard: {
-    flex: 1,
-    height: 100,
-    backgroundColor: '#f0f0f0',
-    borderRadius: 8
-  },
   footerText: {
-    textAlign: 'center',
+    textAlign: 'left',
     fontSize: 12,
     color: '#888',
     marginVertical: 16
   },
+  mail: {
+    fontWeight: '700',
+  }
 });
 
 export default HomeScreen;
