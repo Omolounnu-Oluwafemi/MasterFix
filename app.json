@@ -10,7 +10,7 @@
     "newArchEnabled": true,
     "splash": {
       "image": "./assets/images/MasterfixLOGO.png",
-      "resizeMode": "contain",
+      "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
     "updates": {
@@ -38,7 +38,7 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "c46aa8e2-48ef-4d47-b9a5-a1ad09513b6e"
+        "projectId": "fce49ef8-d431-40a8-87aa-e0b2671d1cfb"
       }
     }
   }

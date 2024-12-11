@@ -1,10 +1,7 @@
 import {
-  DarkTheme,
-  DefaultTheme,
-  NavigationContainer,
+  DarkTheme, DefaultTheme, NavigationContainer
 } from "@react-navigation/native";
 import RootNavigator from "./RootNavigator";
-
 import LinkingConfiguration from "./LinkingConfiguration";
 
 const CustomDarkTheme = {
@@ -26,7 +23,6 @@ const CustomLightTheme = {
     border: "#DDDDDD",
   },
 };
-
 
 export default function Navigation({ colorScheme }) {
   return (

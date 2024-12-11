@@ -105,10 +105,10 @@ const Register = ({navigation}) => {
                   'Continue with Google'
                 )
               }
-              onPress={() => {
-                Keyboard.dismiss();
-                handleSubmit();
-              }}
+              // onPress={() => {
+              //   Keyboard.dismiss();
+              //   handleSubmit();
+              // }}
               width="100%"
               marginLeft='8.5%'
               height={48}
@@ -129,10 +129,10 @@ const Register = ({navigation}) => {
                   'Continue with LinkedIn'
                 )
               }
-              onPress={() => {
-                Keyboard.dismiss();
-                handleSubmit();
-              }}
+              // onPress={() => {
+              //   Keyboard.dismiss();
+              //   handleSubmit();
+              // }}
               width="100%"
               marginLeft='8.5%'
               height={48}
@@ -153,10 +153,10 @@ const Register = ({navigation}) => {
                   'Continue with Microsoft'
                 )
               }
-              onPress={() => {
-                Keyboard.dismiss();
-                handleSubmit();
-              }}
+              // onPress={() => {
+              //   Keyboard.dismiss();
+              //   handleSubmit();
+              // }}
               width="100%"
               marginLeft='8.5%'
               height={48}
