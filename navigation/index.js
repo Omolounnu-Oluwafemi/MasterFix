@@ -10,6 +10,7 @@ const CustomDarkTheme = {
     ...DarkTheme.colors,
     primary: "#333333",
     text: "#FFFFFF",
+    background: '#000',
     border: "#444444",
   },
 };
@@ -21,6 +22,7 @@ const CustomLightTheme = {
     primary: "#FFFFFF",
     text: "#013C69",
     border: "#DDDDDD",
+    background: '#FFFFFF',
   },
 };
 

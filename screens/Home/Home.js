@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, TextInput, ScrollView } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, TextInput, ScrollView, SafeAreaView, StatusBar } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { FontAwesome, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { useTheme } from "@react-navigation/native";
@@ -44,7 +44,12 @@ const HomeScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor="transparent"
+        translucent
+      />
       <ScrollView showsVerticalScrollIndicator={false} >
       {/* Top Bar */}
       <View style={styles.locations}>
@@ -96,7 +101,7 @@ const HomeScreen = ({ navigation }) => {
       {/* Footer */}
       <Text style={styles.footerText}><Text style={styles.mail}>Mail:</Text> lorem.ipsom@mail.com</Text>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 };
 

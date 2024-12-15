@@ -36,7 +36,7 @@ export default function AuthStack() {
       <Stack.Screen name="RecoveryCode" component={RecoveryCode} />
       <Stack.Screen name="NewPassword" component={NewPassword} />
       <Stack.Screen name="ResetSuccess" component={ResetSuccess} />
-      <Stack.Screen name="HomeScreen" component={Home} />
+      {/* <Stack.Screen name="HomeScreen" component={Home} /> */}
     </Stack.Navigator>
   );
 }

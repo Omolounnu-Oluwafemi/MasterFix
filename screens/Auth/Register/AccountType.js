@@ -65,7 +65,7 @@ const AccountType = ({navigation, route}) => {
         await AsyncStorage.setItem('userLocation', JSON.stringify(locationInfo));
 
         if (previousScreen === 'VerifyCode') {
-          navigation.navigate('HomeScreen');
+          navigation.replace('Main');
         } else {
           if (selectedAccountType === 'artisan') {
             navigation.navigate('ArtisanDetails');
