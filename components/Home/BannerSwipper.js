@@ -1,80 +1,111 @@
-// BannerSwiper.js
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
 import Swiper from 'react-native-swiper';
 
-const BannerSwiper = () => {
+const BannerComponent = () => {
   return (
-    <View style={styles.bannerContainer}>
-      <Swiper 
-        autoplay 
-        showsPagination 
-        dotStyle={styles.dotStyle} 
-        activeDotStyle={styles.activeDotStyle} 
+    <View style={styles.container}>
+      <Swiper
+        autoplay
+        showsPagination
+        dotStyle={styles.dotStyle}
+        activeDotStyle={styles.activeDotStyle}
         loop
       >
-        <View style={[styles.slide, { backgroundColor: '#0C4085' }]}>
-          <Text style={styles.slideText}>Getting a quick and quality solution made easy</Text>
-          <Image source={require('../../assets/images/plumber-with-his-arms-crossed.png')} style={styles.bannerImage} />
-        </View>
 
+        <View style={[styles.slide, { backgroundColor: '#003399' }]}>
+          <View style={styles.textContainer}>
+            <Text style={styles.text}>Getting a quick and quality solution made easy</Text>
+          </View>
+          <Image
+            source={require('../../assets/images/Ellipse.png')}
+            style={styles.bgimage}
+          />
+          <Image
+            source={require('../../assets/images/plumber-with-his-arms-crossed.png')}
+            style={styles.image}
+          />
+        </View>
         <View style={[styles.slide, { backgroundColor: '#009900' }]}>
-          <Text style={styles.slideText}>Find the best services in your area</Text>
-          <Image source={require('../../assets/images/plumber-with-his-arms-crossed.png')} style={styles.bannerImage} />
+          <View style={styles.textContainer}>
+            <Text style={styles.text}>ind the best services in your area</Text>
+          </View>
+          <Image
+            source={require('../../assets/images/Ellipse.png')}
+            style={styles.bgimage}
+          />
+          <Image
+            source={require('../../assets/images/plumber-with-his-arms-crossed.png')}
+            style={styles.image}
+          />
         </View>
-
-        <View style={[styles.slide, { backgroundColor: '#cc3300' }]}>
-          <Text style={styles.slideText}>Get connected with top-rated experts</Text>
-          <Image source={require('../../assets/images/plumber-with-his-arms-crossed.png')} style={styles.bannerImage} />
+        <View style={[styles.slide, { backgroundColor: '#FFC12E' }]}>
+          <View style={styles.textContainer}>
+            <Text style={styles.text}>Get connected with top-rated experts</Text>
+          </View>
+          <Image
+            source={require('../../assets/images/Ellipse.png')}
+            style={styles.bgimage}
+          />
+          <Image
+            source={require('../../assets/images/plumber-with-his-arms-crossed.png')}
+            style={styles.image}
+          />
         </View>
       </Swiper>
     </View>
   );
 };
 
+const { width } = Dimensions.get('window');
+
 const styles = StyleSheet.create({
-  bannerContainer: {
-    height: '20%',
-    marginTop: 16,
+  container: {
+    height: 220,
   },
   slide: {
     flexDirection: 'row',
-    paddingVertical: '8%',
-    borderRadius: 15,
-    overflow: 'visible',
-    // position: 'relative', 
+    justifyContent: 'space-between',
+    borderRadius: 20,
+    marginTop: 40,
+    height: 120
   },
-  slideText: {
-    color: '#fff',
-    fontSize: 16,
-    width: '70%',
+  textContainer: {
+    flex: 1,
+  },
+  text: {
+    color: '#ffffff',
+    fontSize: 17,
     fontWeight: 'bold',
-    textAlign: 'left',
-    paddingLeft: '5%',
+    marginTop: 20,
+    marginLeft: 15,
   },
-  bannerImage: {
-    width: '30%',
-    // height: 150, // Adjust the height as needed
-    resizeMode: 'contain',
-    position: 'absolute', // Use absolute positioning
-    bottom: 0, // Align the bottom of the image with the bottom of the container
-    left: '70%', // Adjust this value to position the image correctly within the container
-    // transform: [{ translateY: -50 }], // Adjust this value to control how much the image extends beyond the top
-    // zIndex: 1, // Bring the image to the front
+  image: {
+    width: width * 0.3,
+    height: width * 0.45,
+    marginLeft: 10,
+    position: 'absolute',
+    right: 2,
+    bottom: 0, 
   },
-//   dotStyle: {
-//     backgroundColor: '#888',
-//     width: 8,
-//     height: 8,
-//     borderRadius: 4,
-//     marginHorizontal: 4,
-//   },
-//   activeDotStyle: {
-//     backgroundColor: '#007bff',
-//     width: 10,
-//     height: 10,
-//     borderRadius: 5,
-//   },
+  bgimage: {
+    width: width * 0.35,
+    left: 5,
+  },
+  dotStyle: {
+    backgroundColor: '#888',
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    marginHorizontal: 4,
+  },
+  activeDotStyle: {
+    backgroundColor: '#007bff',
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+  },
 });
 
-export default BannerSwiper;
+export default BannerComponent;
+

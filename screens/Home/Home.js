@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, TextInput, ScrollView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { FontAwesome, Ionicons, MaterialCommunityIcons, MaterialIcons, AntDesign } from '@expo/vector-icons';
+import { FontAwesome, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { useTheme } from "@react-navigation/native";
 import HorizontalServices from '../../components/Home/HorizontalServices';
 import TopExperts from '../../components/Home/TopExperts';
 import TopCategories from '../../components/Home/TopCategories';
 import VideoPlayer from '../../components/Home/VideoPlayer';
 import Testimonials from '../../components/Home/Testimonials';
+import BannerSwipper from '../../components/Home/BannerSwipper';
 
 const HomeScreen = ({ navigation }) => {
   const [firstName, setFirstName] = useState('');
@@ -70,7 +71,7 @@ const HomeScreen = ({ navigation }) => {
       <Text style={styles.subName}>What service do you need?</Text>
 
         {/* Banner Swiper */}
-        {/* <BannerSwiper /> */}
+        <BannerSwipper />
 
         {/* Search Bar */}
       <View style={styles.searchContainer}>
@@ -102,7 +103,7 @@ const HomeScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: '15%',
+    paddingTop: '15%',
     paddingHorizontal: '5%',
     backgroundColor: '#FFFFFF',
   },
