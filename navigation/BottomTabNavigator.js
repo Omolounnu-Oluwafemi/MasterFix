@@ -6,6 +6,11 @@ import { useTheme } from "@react-navigation/native";
 
 import Colors from "../constants/Colors";
 import HomeScreen from "../screens/Home/Home";
+import CategoryScreen from "../screens/Category/category";
+import SolutionScreen from "../screens/Category/solutions";
+import BookingForm from "../screens/Category/booking";
+import BookingSuccess from "../screens/Category/BookingSuccess";
+import DetailsAndReviews from "../screens/Category/DetailsAndReviews";
 import TabOneScreen from "../screens/TabOneScreen";
 import TabTwoScreen from "../screens/TabTwoScreen";
 
@@ -107,8 +112,28 @@ function BookingsStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Bookings"
-        component={TabTwoScreen}
+        name="Category"
+        component={CategoryScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Solutions"
+        component={SolutionScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Booking"
+        component={BookingForm}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Success"
+        component={BookingSuccess}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="DetailsAndReviews"
+        component={DetailsAndReviews}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
