@@ -89,7 +89,7 @@ function HomeStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Home"
+        name="HomeScreen"
         component={HomeScreen}
         options={{ headerShown: false }}
       />
@@ -122,7 +122,7 @@ function BookingsStack() {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="Booking"
+        name="BookingForm"
         component={BookingForm}
         options={{ headerShown: false }}
       />

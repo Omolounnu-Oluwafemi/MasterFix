@@ -21,7 +21,10 @@ const [selectedCategory, setSelectedCategory] = useState(null);
 
   const handleCategoryPress = (category) => {
     if (selectedCategory === category) {
-      navigation.navigate('Category', { categoryName: category });
+    navigation.navigate('Bookings', {
+      screen: 'Category',
+      params: { categoryName: category },
+    });
     } else {
       setSelectedCategory(category);
     }
