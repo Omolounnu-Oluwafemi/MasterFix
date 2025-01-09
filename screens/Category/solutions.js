@@ -10,13 +10,16 @@ import {
 } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
 import Entypo from '@expo/vector-icons/Entypo';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
   const { width } = Dimensions.get('window');
 
 const SolutionScreen = () => {
   const [activeTab, setActiveTab] = useState('Outlets');
   const navigation = useNavigation();
+  const route = useRoute();
+  const { category = 'Car' } = route.params || {};
+
   
   // Sample data for services and outlets
   const services = [
@@ -25,14 +28,14 @@ const SolutionScreen = () => {
       title: '2 Brake pads replacement',
       price: '₦9,300',
       time: '3 Hours',
-      image: 'https://via.placeholder.com/50', // Replace with actual image URL
+      image: require('../../assets/images/tyre.png'), // Replace with actual image URL
     },
     {
       id: '2',
       title: '3 Brake pads replacement',
       price: '₦12,300',
       time: '3 Hours',
-      image: 'https://via.placeholder.com/50',
+      image: require('../../assets/images/tyre.png'), 
     },
   ];
 
@@ -55,15 +58,25 @@ const SolutionScreen = () => {
 
   const renderServiceItem = ({ item }) => (
     <View style={styles.card}>
-      <Image source={{ uri: item.image }} style={styles.image} />
       <View style={styles.details}>
-        <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.subText}>{item.price}</Text>
-        <Text style={styles.subText}>Max completion time: {item.time}</Text>
+        <Image source={item.image} style={styles.image} />
+        <View style={styles.location}>
+          <Text style={styles.tabTitle}>{item.title}</Text>
+          <Text style={styles.servicePrice}>{item.price}</Text>
+        </View>
+
+        <View style={{alignSelf: 'flex-end'}}>
+          <TouchableOpacity style={styles.getButton} onPress={() => {navigation.navigate('BookingForm')}}>
+            <Text style={styles.buttonText}>Get</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      <TouchableOpacity style={styles.getButton} onPress={() => {navigation.navigate('BookingForm')}}>
-        <Text style={styles.buttonText}>Get</Text>
-      </TouchableOpacity>
+
+
+      <View style={{ flexDirection: 'row', alignItems: 'flex-end', marginTop: 25, gap: 20 }}>
+        <Text style={styles.subText}>Max completion time</Text>
+        <Text style={styles.subText}>{item.time}</Text>
+      </View>
     </View>
   );
 
@@ -78,14 +91,17 @@ const SolutionScreen = () => {
             <Text style={styles.subText}>{item.address}</Text>
           </View>
         </View>
-        <View styke={{alignItems: 'center'}}>
-        <TouchableOpacity style={styles.getButton} onPress={() => {navigation.navigate('BookingForm')}}>
-          <Text style={styles.buttonText}>View</Text>
-        </TouchableOpacity>
+        <View style={{alignSelf: 'flex-end'}}>
+          <TouchableOpacity style={styles.getButton} onPress={() => {navigation.navigate('BookingForm')}}>
+            <Text style={styles.buttonText}>View</Text>
+          </TouchableOpacity>
         </View>
 
       </View>
-        <Text style={styles.subText}>Open time: {item.openTime}</Text>
+      <View style={{ flexDirection: 'row', alignItems: 'flex-end', marginTop: 25, gap: 20 }}>
+        <Text style={styles.subText}>Open time:</Text>
+        <Text style={styles.subText}>{item.openTime}</Text>
+      </View>
     </View>
   );
 
@@ -103,7 +119,7 @@ const SolutionScreen = () => {
       {/* Overlay */}
       <View style={styles.overlay}>
         {/* Back Icon */}
-        <TouchableOpacity style={styles.backButton}>
+        <TouchableOpacity style={styles.backButton} onPress={() => navigation.goBack()}>
             <MaterialIcons name="arrow-back-ios" size={20} color='#000' style={styles.backIcon} />
             <Text style={styles.backText}>Back</Text>
         </TouchableOpacity>
@@ -121,7 +137,7 @@ const SolutionScreen = () => {
       </View>
       
       <View style={styles.header}>
-        <Text style={styles.title}>Car Solutions</Text>
+        <Text style={styles.title}>{category} Solutions</Text>
       </View>
 
       {/* Tabs */}
@@ -231,7 +247,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     padding: 16,
-    // backgroundColor: '#f8f8f8',
     marginTop: '15%',
     paddingHorizontal: '5%'
   },
@@ -278,33 +293,39 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   image: {
-    width: '30%',
-    height: 70,
+    width: '25%',
+    height: 60,
   },
   details: {
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   location: {
-    width: '40%',
+    width: '50%',
+    marginLeft: 10,
   },
   subText: {
     color: '#8E98A8',
     fontSize: 13,
   },
-  tabTitle: {
+  servicePrice: {
+    marginTop: 10,
+    color: '#8E98A8',
     fontSize: 18,
+  },
+  tabTitle: {
+    fontSize: 16,
     color: '#193053',
   },
   getButton: {
-    backgroundColor: '#000',
+    backgroundColor: '#193053',
     borderRadius: 8,
     paddingVertical: 8,
     paddingHorizontal: 16,
   },
   buttonText: {
     color: '#fff',
-    fontSize: 14,
+    fontSize: 12,
   },
 });
 
