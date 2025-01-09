@@ -1,4 +1,3 @@
-// TopCategories.js
 import React, {useState} from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { FontAwesome5, MaterialIcons, AntDesign, MaterialCommunityIcons } from '@expo/vector-icons';
@@ -22,7 +21,7 @@ const [selectedCategory, setSelectedCategory] = useState(null);
 
   const handleCategoryPress = (category) => {
     if (selectedCategory === category) {
-      navigation.navigate('CategoryDetails', { category });
+      navigation.navigate('Category', { categoryName: category });
     } else {
       setSelectedCategory(category);
     }

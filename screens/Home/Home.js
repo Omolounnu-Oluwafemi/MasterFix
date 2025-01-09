@@ -87,7 +87,7 @@ const HomeScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-      <TopCategories/>
+      <TopCategories />
 
       <HorizontalServices />
       

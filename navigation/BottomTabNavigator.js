@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import { useColorScheme, StyleSheet } from "react-native";
+import { useColorScheme, StyleSheet, TouchableWithoutFeedback, View } from "react-native";
 import { Ionicons, FontAwesome6 } from 'react-native-vector-icons';
 import { useTheme } from "@react-navigation/native"; 
 

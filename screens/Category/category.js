@@ -5,18 +5,25 @@ import {
   TouchableOpacity,
   FlatList,
   StyleSheet,
-  Image,
+  StatusBar,
 } from "react-native";
 import { FontAwesome, MaterialIcons } from "@expo/vector-icons";
 import { useNavigation } from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
+import BackButton from '../../components/BackButton';
 
 const CategoryScreen = () => {
-   const [selectedCategory, setSelectedCategory] = useState("Car");
-   const navigation = useNavigation();
-    
+  const route = useRoute();
+  const [selectedCategory, setSelectedCategory] = useState("Car");
+  const navigation = useNavigation();
+  const { categoryName = "Automobile"  } = route.params || {};
+  
   const handleCategoryPress = (category) => {
-    setSelectedCategory(category.name);
-    navigation.navigate('Solutions', { category: category.name });
+    if (selectedCategory === category.name) {
+      navigation.navigate('Solutions', { category: category.name });
+    } else {
+      setSelectedCategory(category.name);
+    }
   };
 
   const categories = [
@@ -41,19 +48,53 @@ const CategoryScreen = () => {
       rating: 4.6,
       reviews: "2.4K reviews",
     },
-    // Add more offers as needed
+    {
+      id: "3",
+      title: "Car Scan or Diagnostics",
+      price: "₦35,300",
+      rating: 4.6,
+      reviews: "2.4K reviews",
+    },
+    {
+      id: "4",
+      title: "Car Scan or Diagnostics",
+      price: "₦35,300",
+      rating: 4.6,
+      reviews: "2.4K reviews",
+    },
+    {
+      id: "5",
+      title: "Car Scan or Diagnostics",
+      price: "₦35,300",
+      rating: 4.6,
+      reviews: "2.4K reviews",
+    },
+    {
+      id: "6",
+      title: "Car Scan or Diagnostics",
+      price: "₦35,300",
+      rating: 4.6,
+      reviews: "2.4K reviews",
+    },
+    {
+      id: "7",
+      title: "Car Scan or Diagnostics",
+      price: "₦35,300",
+      rating: 4.6,
+      reviews: "2.4K reviews",
+    },
   ];
 
   const renderOffer = ({ item }) => (
     <View style={styles.offerCard}>
-      <View>
+      <View style={styles.offerMain}>
         <Text style={styles.offerTitle}>{item.title}</Text>
+        <Text style={styles.offerPrice}>{item.price}</Text>
+      </View>
+      <View style={styles.offerFooter}>
         <Text style={styles.offerRating}>
           ⭐ {item.rating} ({item.reviews})
         </Text>
-      </View>
-      <View style={styles.offerFooter}>
-        <Text style={styles.offerPrice}>{item.price}</Text>
         <TouchableOpacity style={styles.labelButton} onPress={() => {navigation.navigate('DetailsAndReviews')}}>
           <Text style={styles.labelText}>Label</Text>
         </TouchableOpacity>
@@ -63,12 +104,18 @@ const CategoryScreen = () => {
 
   return (
     <View style={styles.container}>
+        <StatusBar
+          barStyle="dark-content"
+          backgroundColor="transparent"
+          translucent
+        />
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity>
-          <MaterialIcons name="arrow-back" size={24} color="#000" />
-        </TouchableOpacity>
-        <Text style={styles.headerTitle}>Automobile</Text>
+        <BackButton
+          text="Back"
+          iconPosition="left"
+          alignSelf="flex-start" onPress={() => navigation.goBack()} /> 
+        <Text style={styles.headerTitle}>{categoryName}</Text>
       </View>
 
       {/* Categories */}
@@ -80,13 +127,12 @@ const CategoryScreen = () => {
               styles.categoryButton,
               selectedCategory === category.name && styles.selectedCategory,
             ]}
-                // onPress={() => setSelectedCategory(category.name)}
             onPress={() => handleCategoryPress(category)}
           >
             <MaterialIcons
               name={category.icon}
-              size={24}
-              color={selectedCategory === category.name ? "#007BFF" : "#888"}
+              size={34}
+              color= "#2F7FEF"
             />
             <Text
               style={[
@@ -116,78 +162,86 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+    paddingTop: '15%',
+    marginHorizontal: 20,
   },
   header: {
-    flexDirection: "row",
-    alignItems: "center",
+    flexDirection: "column",
     padding: 16,
-    backgroundColor: "#F5F5F5",
   },
   headerTitle: {
-    marginLeft: 16,
-    fontSize: 18,
-    fontWeight: "bold",
+    marginTop: 20,
+    fontSize: 25,
+    textAlign: "center",
+    fontWeight: "700",
+    color: '#013C69'
   },
   categories: {
     flexDirection: "row",
-    justifyContent: "space-around",
-    paddingVertical: 16,
+    flexWrap: 'wrap',
+    justifyContent: "space-between",
     backgroundColor: "#fff",
   },
   categoryButton: {
     alignItems: "center",
-    padding: 8,
+    paddingVertical: '5%',
+    width: '30%',
+    marginVertical: '3%',
   },
   selectedCategory: {
-    borderBottomWidth: 2,
-    borderBottomColor: "#007BFF",
+    borderWidth: 2,
+    borderColor: "#007BFF",
+    borderRadius: 15,
   },
   categoryText: {
     marginTop: 8,
     color: "#888",
+    fontSize: 12,
   },
   selectedText: {
     color: "#007BFF",
-    fontWeight: "bold",
   },
   sectionTitle: {
-    fontSize: 16,
-    fontWeight: "bold",
-    marginHorizontal: 16,
-    marginVertical: 8,
-  },
-  offersList: {
-    paddingHorizontal: 16,
+    fontSize: 20,
+    fontWeight: "500",
+    marginVertical: '5%',
+    color: "#7C7C7F",
   },
   offerCard: {
     backgroundColor: "#F5F5F5",
     borderRadius: 8,
     padding: 16,
+    paddingHorizontal: 20,
     marginBottom: 16,
   },
+  offerMain: {
+    flexDirection: "row",
+    paddingVertical: 10,
+  },
   offerTitle: {
+    width: "75%",
     fontSize: 14,
     fontWeight: "bold",
   },
   offerRating: {
+    width: "75%",
     marginTop: 4,
     color: "#888",
   },
   offerFooter: {
     flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginTop: 16,
+    paddingVertical: 10,
   },
   offerPrice: {
     fontSize: 16,
     fontWeight: "bold",
+    color: "#707072",
   },
   labelButton: {
-    backgroundColor: "#007BFF",
+    backgroundColor: "#193053",
     borderRadius: 4,
-    paddingHorizontal: 12,
-    paddingVertical: 4,
+    paddingHorizontal: '6%',
+    paddingVertical: '4%',
   },
   labelText: {
     color: "#fff",
