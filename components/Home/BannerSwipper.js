@@ -12,7 +12,6 @@ const BannerComponent = () => {
         activeDotStyle={styles.activeDotStyle}
         loop
       >
-
         <View style={[styles.slide, { backgroundColor: '#003399' }]}>
           <View style={styles.textContainer}>
             <Text style={styles.text}>Getting a quick and quality solution made easy</Text>
@@ -28,7 +27,7 @@ const BannerComponent = () => {
         </View>
         <View style={[styles.slide, { backgroundColor: '#009900' }]}>
           <View style={styles.textContainer}>
-            <Text style={styles.text}>ind the best services in your area</Text>
+            <Text style={styles.text}>Find the best services in your area</Text>
           </View>
           <Image
             source={require('../../assets/images/Ellipse.png')}

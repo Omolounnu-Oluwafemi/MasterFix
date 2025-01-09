@@ -87,7 +87,7 @@ const HomeScreen = ({ navigation }) => {
         </TouchableOpacity>
       </View>
 
-      <TopCategories/>
+      <TopCategories />
 
       <HorizontalServices />
       
@@ -109,8 +109,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: '15%',
-    paddingHorizontal: '5%',
-    backgroundColor: '#FFFFFF',
+    width: '90%',
+    marginLeft: '5%',
+    backgroundColor: '#fff',
   },
   locations: {
     flexDirection: 'row',

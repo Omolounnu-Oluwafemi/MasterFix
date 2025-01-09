@@ -1,11 +1,16 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import { useColorScheme, StyleSheet } from "react-native";
+import { useColorScheme, StyleSheet, TouchableWithoutFeedback, View } from "react-native";
 import { Ionicons, FontAwesome6 } from 'react-native-vector-icons';
 import { useTheme } from "@react-navigation/native"; 
 
 import Colors from "../constants/Colors";
 import HomeScreen from "../screens/Home/Home";
+import CategoryScreen from "../screens/Category/category";
+import SolutionScreen from "../screens/Category/solutions";
+import BookingForm from "../screens/Category/booking";
+import BookingSuccess from "../screens/Category/BookingSuccess";
+import DetailsAndReviews from "../screens/Category/DetailsAndReviews";
 import TabOneScreen from "../screens/TabOneScreen";
 import TabTwoScreen from "../screens/TabTwoScreen";
 
@@ -84,7 +89,7 @@ function HomeStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Home"
+        name="HomeScreen"
         component={HomeScreen}
         options={{ headerShown: false }}
       />
@@ -107,8 +112,28 @@ function BookingsStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Bookings"
-        component={TabTwoScreen}
+        name="Category"
+        component={CategoryScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Solutions"
+        component={SolutionScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="BookingForm"
+        component={BookingForm}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Success"
+        component={BookingSuccess}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="DetailsAndReviews"
+        component={DetailsAndReviews}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

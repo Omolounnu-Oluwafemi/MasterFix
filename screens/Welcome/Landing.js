@@ -56,9 +56,9 @@ export default LandingPage;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    width: '100%',
-    paddingHorizontal: '10%',
-    paddingTop: '20%',
+    width: '90%',
+    marginHorizontal: '5%',
+    paddingTop: '30%',
     // backgroundColor: '#FFFFFF'
   },
   logo: {
