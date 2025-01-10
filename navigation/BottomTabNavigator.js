@@ -14,6 +14,7 @@ import DetailsAndReviews from "../screens/Category/DetailsAndReviews";
 import TabOneScreen from "../screens/TabOneScreen";
 import TabTwoScreen from "../screens/TabTwoScreen";
 import SettingHome from "../screens/SettingHome";
+import Profile from "../screens/Profile";
 
 const BottomTab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -97,6 +98,11 @@ function HomeStack() {
       <Stack.Screen
         name="SettingHome"
         component={SettingHome}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

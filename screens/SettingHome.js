@@ -1,9 +1,9 @@
-import { View, Text, TouchableOpacity, StyleSheet, TextInput, ScrollView, SafeAreaView, StatusBar } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, SafeAreaView } from 'react-native';
 import BackButton from '../components/BackButton';
 import { Ionicons } from 'react-native-vector-icons';
 
 const settingsOptions = [
-    { label: 'Edit Profile', icon: 'person', screen: 'EditProfile' },
+    { label: 'Edit Profile', icon: 'person', screen: 'Profile' },
     { label: 'Change Password', icon: 'lock-closed', screen: 'ChangePassword' },
     { label: 'Allow Notification', icon: 'notifications', screen: 'Notifications' },
     { label: 'Privacy', icon: 'shield-checkmark', screen: 'Privacy' },
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#fff",
-        paddingTop: '15%',
+        paddingTop: '5%',
         marginHorizontal: 20,
     },
     verifyText: {
@@ -80,12 +80,12 @@ const styles = StyleSheet.create({
         fontWeight: '500',
         lineHeight: 42,
         textAlign: 'center',
-        marginTop: '10%',
+        marginTop: '5%',
     },
     balanceBox: {
         borderRadius: 10,
         padding: 20,
-        marginTop: '10%',
+        marginTop: '5%',
         borderWidth: 2,
         borderColor: '#eaeaea',
     },
