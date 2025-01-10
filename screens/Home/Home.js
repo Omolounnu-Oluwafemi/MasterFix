@@ -57,7 +57,7 @@ const HomeScreen = ({ navigation }) => {
         <FontAwesome name='angle-down' size={15} color={colors.text} style={styles.locationIcon} />
       </View>
       <View style={styles.icons}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('SettingHome')}>
           <MaterialIcons name="menu" size={30} color="black" />
         </TouchableOpacity>
         <View style={styles.rightIcons}>
