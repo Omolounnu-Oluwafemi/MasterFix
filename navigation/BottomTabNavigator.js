@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import { useColorScheme, StyleSheet, TouchableWithoutFeedback, View } from "react-native";
 import { Ionicons, FontAwesome6 } from 'react-native-vector-icons';
-import { useTheme } from "@react-navigation/native"; 
+import { useTheme } from "@react-navigation/native";
 
 import Colors from "../constants/Colors";
 import HomeScreen from "../screens/Home/Home";
@@ -13,6 +13,8 @@ import BookingSuccess from "../screens/Category/BookingSuccess";
 import DetailsAndReviews from "../screens/Category/DetailsAndReviews";
 import TabOneScreen from "../screens/TabOneScreen";
 import TabTwoScreen from "../screens/TabTwoScreen";
+import SettingHome from "../screens/SettingHome";
+import Profile from "../screens/Profile";
 
 const BottomTab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -26,7 +28,7 @@ export default function BottomTabNavigator() {
     <BottomTab.Navigator
       initialRouteName="HomeTab"
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme].tint,  
+        tabBarActiveTintColor: Colors[colorScheme].tint,
         headerShown: false,
         tabBarShowLabel: true,
         tabBarStyle: styles.tabBar,
@@ -36,11 +38,11 @@ export default function BottomTabNavigator() {
         name="Home"
         component={HomeStack}
         options={{
-          tabBarIcon: ({ color}) => (
+          tabBarIcon: ({ color }) => (
             <TabBarIcon
               name="home-outline"
               color={color}
-            />    
+            />
           ),
         }}
       />
@@ -61,7 +63,7 @@ export default function BottomTabNavigator() {
             <TabBarIcon
               name="bookmark-outline"
               color={color}
-            />  
+            />
           ),
         }}
       />
@@ -73,7 +75,7 @@ export default function BottomTabNavigator() {
             <TabBarIcon
               name="settings-outline"
               color={color}
-            />  
+            />
           ),
         }}
       />
@@ -91,6 +93,16 @@ function HomeStack() {
       <Stack.Screen
         name="HomeScreen"
         component={HomeScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="SettingHome"
+        component={SettingHome}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
