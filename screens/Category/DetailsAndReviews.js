@@ -2,15 +2,16 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import BackButton from '../../components/BackButton';
 
 export default function DetailsAndReviews({ navigation }) {
   return (
     <View style={styles.container}>
+      <View style={styles.top}>
+        <BackButton text="Back" iconPosition="left" alignSelf="flex-start" onPress={() => navigation.goBack()} />
+      </View>
       {/* Header Section */}
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Icon name="arrow-back" size={24} color="#000" />
-        </TouchableOpacity>
         <Text style={styles.headerTitle}>EasyFix.Ng</Text>
         <TouchableOpacity>
           <Text style={styles.bookNow}>Book Now</Text>
@@ -83,6 +84,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    // marginTop: '10%'
+  },
+  top: {
+    alignItems: 'flex-start',
+    padding: 10,
+    marginTop: '15%',
+    marginLeft: '5%'
   },
   header: {
     flexDirection: 'row',

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, StyleSheet, TouchableOpacity } from 'react-native';
+import BackButton from '../../components/BackButton';
 
 export default function BookingForm({ navigation }) {
   const [description, setDescription] = useState('');
@@ -8,6 +9,9 @@ export default function BookingForm({ navigation }) {
 
   return (
     <View style={styles.container}>
+        <View style={styles.top}>
+          <BackButton text="Back" iconPosition="left" alignSelf="flex-start" onPress={() => navigation.goBack()} />
+        </View>
       <Text style={styles.label}>Description</Text>
       <TextInput
         style={styles.input}
@@ -47,6 +51,12 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: '#fff',
+  },
+  top: {
+    alignItems: 'flex-start',
+    padding: 10,
+    marginTop: '15%',
+    marginLeft: '5%'
   },
   label: {
     fontSize: 16,

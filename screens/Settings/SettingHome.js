@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, SafeAreaView } from 'react-native';
-import BackButton from '../components/BackButton';
+import BackButton from './../../components/BackButton';
 import { Ionicons } from 'react-native-vector-icons';
 
 const settingsOptions = [
@@ -9,7 +9,7 @@ const settingsOptions = [
     { label: 'Privacy', icon: 'shield-checkmark', screen: 'Privacy' },
     { label: 'FAQs', icon: 'help-circle', screen: 'FAQs' },
     { label: 'Terms & Policies', icon: 'document-text', screen: 'TermsPolicies' },
-    { label: 'Transactions History', icon: 'time', screen: 'TransactionHistory' },
+    { label: 'Transactions History', icon: 'time', screen: 'Transactions' },
     { label: 'Report A Problem', icon: 'bug', screen: 'ReportProblem' },
     { label: 'Help & Support', icon: 'help-buoy', screen: 'HelpSupport' },
     { label: 'About Us', icon: 'information-circle', screen: 'AboutUs' },
