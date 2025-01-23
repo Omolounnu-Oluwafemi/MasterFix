@@ -5,22 +5,28 @@ import Animated from 'react-native-reanimated';
 
 const AnimatedInputField = ({ label, hint }) => {
     const [text, setText] = useState('');
+     const [isFocused, setIsFocused] = useState(false);
 
 
-    return (
-        <FloatingLabelInput
-            label={label}
-            value={text}
-            staticLabel
-            hintTextColor="#000"
-            hint={hint}
-            containerStyles={styles.inputContainer}
-            customLabelStyles={styles.customLabel}
-            labelStyles={styles.label}
-            inputStyles={styles.input}
-            onChangeText={setText}
-        />
-    );
+ return (
+    <FloatingLabelInput
+      label={label}
+      value={text}
+      staticLabel
+      hintTextColor="#000"
+      hint={hint}
+      containerStyles={styles.inputContainer}
+      customLabelStyles={{
+        ...styles.customLabel,
+        backgroundColor: isFocused || text ? '#2F7FEF' : 'transparent', // Background for label
+      }}
+      labelStyles={styles.label}
+      inputStyles={styles.input}
+      onChangeText={setText}
+      onFocus={() => setIsFocused(true)} // Set focus state to true
+      onBlur={() => setIsFocused(false)} // Set focus state to false
+    />
+  );
 };
 
 const styles = StyleSheet.create({
@@ -31,15 +37,15 @@ const styles = StyleSheet.create({
         borderRadius: 8,
     },
     customLabel: {
-        backgroundColorFocused: '#2F7FEF',
         fontSizeFocused: 12,
-        colorBlurred: '#000',
         fontSizeBlurred: 14,
-
     },
     label: {
-        backgroundColor: '#2F7FEF',
+        backgroundColor: '#E9EBF8',
+        color: '#fff',
         paddingHorizontal: 5,
+        marginTop: -5,
+        textAlign: 'center',
     },
     input: {
         color: '#000',

@@ -40,6 +40,9 @@
       "eas": {
         "projectId": "c46aa8e2-48ef-4d47-b9a5-a1ad09513b6e"
       }
-    }
+    },
+     "expo": {
+    "userInterfaceStyle": "automatic"
+  }
   }
 }

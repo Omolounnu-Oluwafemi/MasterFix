@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
-import { Ionicons } from '@expo/vector-icons'; // Ensure you have this installed
+import { Ionicons, Entypo  } from '@expo/vector-icons';
 import BackButton from '../../components/BackButton';
+import CustomButton from '../../components/CustomButton';
 
 const schedules = [
   {
@@ -34,11 +35,16 @@ const ScheduleScreen = ({ navigation }) => {
   const renderItem = ({ item }) => (
     <View style={styles.card}>
       <View style={styles.cardHeader}>
-        <Ionicons name="calendar-outline" size={24} color="#2B4C9B" />
+        <Entypo name="pin" size={24} color="#2B4C9B" />
         <Text style={styles.title}>{item.title}</Text>
       </View>
-      <Text style={styles.date}>{item.date}</Text>
-      <Text style={styles.time}>{item.time}</Text>
+      <View style={styles.cardHeader}>
+        <Ionicons name="calendar-outline" size={24} color="#2B4C9B" />
+        <View style={{ marginLeft: 18, marginTop: 10 }}>
+          <Text style={styles.date}>{item.date}</Text>
+          <Text style={styles.time}>{item.time}</Text>
+        </View>
+      </View>
       <TouchableOpacity>
         <Text style={styles.detailsButton}>See all details</Text>
       </TouchableOpacity>
@@ -50,20 +56,22 @@ const ScheduleScreen = ({ navigation }) => {
         <View style={styles.top}>
           <BackButton text="Back" iconPosition="left" alignSelf="flex-start" onPress={() => navigation.goBack()} />
         </View>
-      <View style={styles.header}>
-        <Text style={styles.headerTitle}>Schedules</Text>
-      </View>
-
       <FlatList
         data={schedules}
         renderItem={renderItem}
         keyExtractor={(item) => item.id}
         contentContainerStyle={styles.list}
+        showsVerticalScrollIndicator={false}
       />
 
-      <TouchableOpacity style={styles.historyButton} onPress={() => navigation.navigate('Transactions')}>
-        <Text style={styles.historyButtonText}>Transaction History</Text>
-      </TouchableOpacity>
+          <CustomButton
+            title="Transaction History"
+            backgroundColor="#003366"
+            TextColor="#fff"
+            marginTop={20}
+            marginBottom={20}
+            onPress={() => navigation.navigate('Transactions')}
+          />
     </View>
   );
 };
@@ -72,19 +80,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#FFF',
-    paddingHorizontal: 16,
+    paddingHorizontal: '4%',
   },
   top: {
     alignItems: 'flex-start',
     padding: 10,
     marginTop: '15%',
-    marginLeft: '5%'
+    marginLeft: '5%',
+    marginBottom: '7%'
   },
   header: {
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: 16,
-    marginBottom: 16,
   },
   headerTitle: {
     fontSize: 20,
@@ -104,32 +112,35 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     shadowOffset: { width: 0, height: 2 },
     elevation: 2,
+    paddingHorizontal: '5%',
+    marginTop: '5%',
   },
   cardHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 8,
   },
   title: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
-    color: '#2B4C9B',
-    marginLeft: 8,
+    color: '#193053',
+    marginLeft: 18,
   },
   date: {
     fontSize: 14,
-    color: '#6B6B6B',
+    color: '#7C7C7F',
     marginBottom: 4,
   },
   time: {
     fontSize: 14,
-    color: '#6B6B6B',
+    color: '#7C7C7F',
     marginBottom: 8,
   },
   detailsButton: {
     fontSize: 14,
-    color: '#2B4C9B',
-    fontWeight: 'bold',
+    color: '#193053',
+    fontWeight: '400',
+    textAlign: 'center',
+    marginTop: 5,
   },
   historyButton: {
     backgroundColor: '#2B4C9B',

@@ -4,36 +4,38 @@ import { Ionicons } from '@expo/vector-icons';
 import BackButton from '../../components/BackButton';
 
 const notifications = [
-  { id: '1', icon: 'notifications-outline', title: 'Reminder', description: 'Korem ipsum dolor sit amet, consectetur', action: 'Check' },
-  { id: '2', icon: 'card-outline', title: 'Debit Card Added!', description: 'Korem ipsum dolor sit amet, consectetur', action: 'Add' },
-  { id: '3', icon: 'checkmark-circle-outline', title: 'Booking Confirmed', description: 'Korem ipsum dolor sit amet, consectetur', action: null },
-  { id: '4', icon: 'pricetag-outline', title: 'Get 30% Discount', description: 'Korem ipsum dolor sit amet, consectetur', action: null },
-  { id: '5', icon: 'person-circle-outline', title: 'Account Setup Successful', description: 'Korem ipsum dolor sit amet, consectetur', action: null },
+  { id: '1', icon: 'notifications-outline', title: 'Reminder', time: '3:21 PM', description: 'Korem ipsum dolor sit amet, consectetur', action: 'Check' },
+  { id: '2', icon: 'card-outline', title: 'Debit Card Added!', time: '3:21 PM', description: 'Korem ipsum dolor sit amet, consectetur', action: 'Add' },
+  { id: '3', icon: 'checkmark-circle-outline', title: 'Booking Confirmed', time: '3:21 PM', description: 'Korem ipsum dolor sit amet, consectetur', action: null },
+  { id: '4', icon: 'pricetag-outline', title: 'Get 30% Discount', time: '3:21 PM', description: 'Korem ipsum dolor sit amet, consectetur', action: null },
+  { id: '5', icon: 'person-circle-outline', title: 'Account Setup Successful', time: '3:21 PM', description: 'Korem ipsum dolor sit amet, consectetur', action: null },
 ];
 
 const NotificationScreen = ({ navigation }) => {
   const renderNotification = ({ item }) => (
     <View style={styles.notificationCard}>
       <View style={styles.iconContainer}>
-        <Ionicons name={item.icon} size={24} color="#F5A623" />
+        <Ionicons name={item.icon} size={40} color="#F5A623" />
       </View>
-      <View style={styles.textContainer}>
-        <Text style={styles.title}>{item.title}</Text>
-        <Text style={styles.description}>{item.description}</Text>
-      </View>
-      <View style={styles.actionContainer}>
-        {item.action && (
-          <TouchableOpacity style={styles.actionButton}>
-            <Text style={styles.actionText}>{item.action}</Text>
-          </TouchableOpacity>
-        )}
+      <View style={{flex: 1}}>
+        <View style={styles.textContainer}>
+            <Text style={styles.title}>{item.title}</Text>
+            <Text style={styles.time}>{item.time}</Text>
+        </View>
+        <View style={styles.actionContainer}>
+          <Text style={styles.description}>{item.description}</Text>
+          {item.action && (
+            <TouchableOpacity style={styles.actionButton}>
+              <Text style={styles.actionText}>{item.action}</Text>
+            </TouchableOpacity>
+          )}
+          </View>
       </View>
     </View>
   );
 
   return (
     <View style={styles.container}>
-          {/* Back Button */}
         <View style={styles.top}>
           <BackButton text="Back" iconPosition="left" alignSelf="flex-start" onPress={() => navigation.goBack()} />
         </View>
@@ -41,10 +43,8 @@ const NotificationScreen = ({ navigation }) => {
         <Text style={styles.headerText}>Notifications</Text>
       </View>
 
-      {/* Recent Section */}
       <Text style={styles.sectionTitle}>Recent</Text>
 
-      {/* Notification List */}
       <FlatList
         data={notifications}
         renderItem={renderNotification}
@@ -66,24 +66,23 @@ const styles = StyleSheet.create({
     marginTop: '15%',
     marginLeft: '5%'
   },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 16,
-  },
   backButton: {
     marginRight: 16,
   },
   headerText: {
-    fontSize: 18,
-    fontWeight: 'bold',
+    fontSize: 28,
+    fontWeight: '500',
+    textAlign: 'center',
+    marginTop: 20, 
+    color: '#013C69'
   },
   sectionTitle: {
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: '500',
     paddingHorizontal: 16,
     marginVertical: 8,
-    color: '#6E6E6E',
+    color: '#7C7C7F',
+    marginTop: 20, 
   },
   listContent: {
     paddingHorizontal: 16,
@@ -93,7 +92,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F9F9F9',
     borderRadius: 8,
-    padding: 12,
+    padding: 20,
     marginBottom: 12,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 1 },
@@ -105,24 +104,36 @@ const styles = StyleSheet.create({
     marginRight: 12,
   },
   textContainer: {
-    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between' 
   },
   title: {
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: 12,
+    fontWeight: '500',
     marginBottom: 4,
+    color: '#013C69',
+  },
+  time: {
+    fontSize: 12,
+    fontWeight: '400',
+    marginBottom: 4,
+    color: '#707072',
   },
   description: {
-    fontSize: 14,
-    color: '#6E6E6E',
+    width: '70%',
+    fontSize: 12,
+    lineHeight: 18,
+    color: '#707072',
   },
   actionContainer: {
-    justifyContent: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 8,
   },
   actionButton: {
     backgroundColor: '#00214D',
-    paddingVertical: 6,
-    paddingHorizontal: 12,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
     borderRadius: 4,
   },
   actionText: {

@@ -14,7 +14,7 @@ const transactions = [
     expert: 'Eng. Shola',
     paymentStatus: 'Not paid',
     paymentType: null,
-    image: 'https://via.placeholder.com/50', // Replace with actual image URL
+    image: require('../../assets/images/transactionperson.png'),
   },
   {
     id: '2',
@@ -26,7 +26,7 @@ const transactions = [
     expert: 'Eng. Shola',
     paymentStatus: 'M wallet',
     paymentType: 'Wallet',
-    image: 'https://via.placeholder.com/50', // Replace with actual image URL
+    image: require('../../assets/images/transactionperson.png'),
   },
   {
     id: '3',
@@ -38,7 +38,8 @@ const transactions = [
     expert: 'Eng. Shola',
     paymentStatus: 'Cash',
     paymentType: 'Cash',
-    image: 'https://via.placeholder.com/50', // Replace with actual image URL
+        image: require('../../assets/images/transactionperson.png'),
+
   },
 ];
 
@@ -50,55 +51,64 @@ const TransactionScreen = ({ navigation }) => {
         item.status === 'On Going' ? styles.onGoingBorder : styles.completedBorder,
       ]}
     >
-      {/* Profile Image */}
-      <Image source={{ uri: item.image }} style={styles.profileImage} />
+      <View style={{ flexDirection: 'row', flex: 1, padding: 5 }}>
+        <Image source={item.image} style={styles.profileImage} />
+        <View style={styles.topDetails}>
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', gap: 10 }}>
+            <Text >Booking Id:
+              <Text style={styles.bookingId}> {item.bookingId}</Text></Text>
+              <View
+                style={[
+                  styles.statusBadge,
+                  item.status === 'On Going' ? styles.onGoingStatus : styles.completedStatus,
+                ]}
+              >
+              <Text style={[styles.statusText, item.status === 'On Going' ? styles.onGoingText : styles.completedText,]}>{item.status}</Text>
+            </View>
+          </View>
 
-      {/* Transaction Details */}
-      <View style={styles.detailsContainer}>
-        <Text style={styles.bookingId}>Booking Id: {item.bookingId}</Text>
-        <Text style={styles.amount}>{item.amount}</Text>
-        <Text style={styles.label}>Services</Text>
-        <Text style={styles.value}>{item.services}</Text>
-        <Text style={styles.label}>Company</Text>
-        <Text style={styles.value}>{item.company}</Text>
-        <Text style={styles.label}>Expert</Text>
-        <Text style={styles.value}>{item.expert}</Text>
-        <Text style={styles.label}>Payment Status</Text>
-        <Text style={styles.paymentStatus(item.status)}>{item.paymentStatus}</Text>
-      </View>
+            <View style={styles.statusContainer}>
+              <Text style={styles.amount}>{item.amount}</Text>
 
-      {/* Status and Action */}
-      <View style={styles.statusContainer}>
-        <View
-          style={[
-            styles.statusBadge,
-            item.status === 'On Going' ? styles.onGoingStatus : styles.completedStatus,
-          ]}
-        >
-          <Text style={styles.statusText}>{item.status}</Text>
+              <TouchableOpacity>
+                <Text style={styles.actionText}>Not satisfied?</Text>
+              </TouchableOpacity>
+            </View>
         </View>
-        <TouchableOpacity>
-          <Text style={styles.actionText}>Not satisfied?</Text>
-        </TouchableOpacity>
       </View>
+      
+      <View style={{width: '100%', paddingHorizontal: '3%', justifyContent: 'center'}}>
+        <View style={styles.detailsContainer}>
+          <Text style={styles.label}>Services</Text>
+          <Text style={styles.value}>{item.services}</Text>
+        </View>
+        <View style={styles.detailsContainer}>
+          <Text style={styles.label}>Company</Text>
+          <Text style={styles.value}>{item.company}</Text>
+        </View>
+        <View style={styles.detailsContainer}>
+          <Text style={styles.label}>Expert</Text>
+          <Text style={styles.value}>{item.expert}</Text>
+        </View>
+        <View style={styles.detailsContainer}>
+          <Text style={styles.label}>Payment Status</Text>
+          <Text style={[styles.value, item.paymentStatus === 'Not paid' ? styles.notPaidStatus : styles.cashStatus,]}>{item.paymentStatus}</Text>
+        </View>
+    </View>
     </View>
   );
 
   return (
       <View style={styles.container}>
         <View style={styles.top}>
-          <BackButton text="Back" iconPosition="left" alignSelf="flex-start" onPress={() => navigation.goBack()} />
+          <BackButton text="Back" iconPosition="left" alignSelf="flex-start" onPress={() => navigation.navigate('Settings')} />
+          <View style={styles.headerIcons}>
+            <Ionicons name="notifications-outline" size={24} color="#000" style={styles.icon} />
+            <Ionicons name="search-outline" size={24} color="#000" />
+          </View>
         </View>
-      {/* Header */}
-      <View style={styles.header}>
         <Text style={styles.headerText}>Transactions</Text>
-        <View style={styles.headerIcons}>
-          <Ionicons name="notifications-outline" size={24} color="#000" style={styles.icon} />
-          <Ionicons name="search-outline" size={24} color="#000" />
-        </View>
-      </View>
 
-      {/* Transaction List */}
       <FlatList
         data={transactions}
         renderItem={renderTransaction}
@@ -115,10 +125,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
   },
   top: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     alignItems: 'flex-start',
     padding: 10,
     marginTop: '15%',
-    marginLeft: '5%'
+    paddingHorizontal: '8%'
   },
   header: {
     flexDirection: 'row',
@@ -129,9 +141,12 @@ const styles = StyleSheet.create({
   backButton: {
     marginRight: 16,
   },
-  headerText: {
+  headerText: {          
     fontSize: 18,
     fontWeight: 'bold',
+    textAlign: 'center',
+    marginVertical: 16,
+    // justifyContent: 'center',
   },
   headerIcons: {
     flexDirection: 'row',
@@ -144,7 +159,6 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
   },
   transactionCard: {
-    flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#F9F9F9',
     borderRadius: 8,
@@ -153,24 +167,30 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   onGoingBorder: {
-    borderColor: '#F5A623',
+    borderColor: '#F59921',
+    borderWidth: 1.5,
   },
   completedBorder: {
     borderColor: '#4CAF50',
+    borderWidth: 1,
   },
   profileImage: {
     width: 50,
     height: 50,
-    borderRadius: 25,
-    marginRight: 12,
+    borderRadius: 10,
+    marginRight: '5%'
   },
   detailsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  topDetails: {
     flex: 1,
   },
   bookingId: {
-    fontSize: 16,
+    fontSize: 13,
     fontWeight: 'bold',
-    marginBottom: 4,
   },
   amount: {
     fontSize: 14,
@@ -181,10 +201,13 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: '#6E6E6E',
     marginTop: 8,
+    fontWeight: '400',
   },
   value: {
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: '600',
+    marginTop: 8,
+    color: '#444446'
   },
   paymentStatus: (status) => ({
     fontSize: 14,
@@ -192,19 +215,32 @@ const styles = StyleSheet.create({
     color: status === 'On Going' ? '#FF0000' : '#4CAF50',
   }),
   statusContainer: {
-    alignItems: 'flex-end',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: '3%',
   },
   statusBadge: {
     paddingHorizontal: 12,
     paddingVertical: 4,
-    borderRadius: 12,
-    marginBottom: 8,
+    borderRadius: 10,
   },
   onGoingStatus: {
-    backgroundColor: '#FFE4B3',
+    backgroundColor: '#FFF5DC',
+  },
+  onGoingText: {
+    color: '#FFB83D',
+  },
+  completedText: {
+    color: '#FAFAFA',
+  },
+  notPaidStatus: {
+    color: '#FF1A30',
+  },
+  cashStatus: {
+    color: '#34C759',
   },
   completedStatus: {
-    backgroundColor: '#C8E6C9',
+    backgroundColor: '#0B7B69',
   },
   statusText: {
     fontSize: 12,

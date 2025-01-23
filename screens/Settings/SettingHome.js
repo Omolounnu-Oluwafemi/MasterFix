@@ -3,18 +3,18 @@ import BackButton from './../../components/BackButton';
 import { Ionicons } from 'react-native-vector-icons';
 
 const settingsOptions = [
-    { label: 'Edit Profile', icon: 'person', screen: 'Profile' },
-    { label: 'Change Password', icon: 'lock-closed', screen: 'ChangePassword' },
-    { label: 'Allow Notification', icon: 'notifications', screen: 'Notifications' },
-    { label: 'Privacy', icon: 'shield-checkmark', screen: 'Privacy' },
-    { label: 'FAQs', icon: 'help-circle', screen: 'FAQs' },
-    { label: 'Terms & Policies', icon: 'document-text', screen: 'TermsPolicies' },
-    { label: 'Transactions History', icon: 'time', screen: 'Transactions' },
-    { label: 'Report A Problem', icon: 'bug', screen: 'ReportProblem' },
-    { label: 'Help & Support', icon: 'help-buoy', screen: 'HelpSupport' },
-    { label: 'About Us', icon: 'information-circle', screen: 'AboutUs' },
-    { label: 'Log Out', icon: 'log-out', screen: 'LogOut' },
-    { label: 'Delete My Account', icon: 'trash', screen: 'DeleteAccount' },
+    { label: 'Edit Profile', icon: 'person-outline', screen: 'Profile' },
+    { label: 'Change Password', icon: 'shield-checkmark-outline', screen: 'ChangePassword' },
+    { label: 'Allow Notification', icon: 'notifications-outline', screen: 'Notifications' },
+    { label: 'Privacy', icon: 'lock-closed-outline', screen: 'Privacy' },
+    { label: 'FAQs', icon: 'help-circle-outline', screen: 'FAQs' },
+    { label: 'Terms & Policies', icon: 'document-text-outline', screen: 'TermsPolicies' },
+    { label: 'Transactions History', icon: 'card-outline', screen: 'Transactions' },
+    { label: 'Report A Problem', icon: 'flag-outline', screen: 'ReportProblem' },
+    { label: 'Help & Support', icon: 'help-circle-outline', screen: 'HelpSupport' },
+    { label: 'About Us', icon: 'information-circle-outline', screen: 'AboutUs' },
+    { label: 'Log Out', icon: 'log-out-outline', screen: 'LogOut' },
+    { label: 'Delete My Account', icon: 'trash-outline', screen: 'DeleteAccount' },
 ];
 
 
@@ -39,13 +39,13 @@ export default function SettingHome({ navigation }) {
             <ScrollView showsVerticalScrollIndicator={false} >
 
                 <View style={styles.container}>
-                    <BackButton text="Home" iconPosition="left" alignSelf="flex-start" onPress={() => navigation.goBack()} />
+                    <BackButton text="Home" iconPosition="left" alignSelf="flex-start" onPress={() => navigation.navigate('Home')} />
                     <Text style={styles.verifyText}>Settings</Text>
                 </View>
                 <View style={styles.balanceBox}>
                     <View style={styles.head}>
                         <Text style={styles.balance}>Current Balance</Text>
-                        `<Ionicons name="eye" size={24} color="#8E98A8" />
+                        <Ionicons name="eye" size={24} color="#8E98A8" />
                     </View>
                     <Text style={styles.amount}>$27,200.00</Text>
                 </View>
@@ -125,6 +125,8 @@ const styles = StyleSheet.create({
     },
     fieldContainer: {
         marginTop: '5%',
+        paddingBottom: '5%',
+        marginBottom: '5%',
         backgroundColor: '#E9EBF8',
         borderRadius: 10,
         paddingTop: 20,

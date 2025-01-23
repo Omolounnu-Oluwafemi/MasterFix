@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
         fontWeight: '400',
         backgroundColor: '#013C69',
         padding: 15,
+        paddingHorizontal: 20,
         textAlign: 'center',
         borderRadius: 10,
     },

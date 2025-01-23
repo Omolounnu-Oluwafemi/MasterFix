@@ -2,10 +2,31 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import BackButton from '../../components/BackButton';
+import CustomerSatisfactionChart from '../../components/CustomerSatisfactionChart';
 
 const solutionImage = require('./../../assets/images/Ellipse 3.png');
 const technicianImage = require('./../../assets/images/technicianpics.png');
+
+const reviews = [
+  {
+    id: '1',
+    name: 'Joel Yusuf',
+    date: 'Dec 14, 2024',
+    text: 'Worem ipsum dolor sit amet, consectetur',
+    image: require('./../../assets/images/technicianpics.png'),
+  },
+  {
+    id: '2',
+    name: 'Evlyn Okoro',
+    date: 'Dec 14, 2024',
+    text: 'Worem ipsum dolor sit amet, consectetur',
+    image: require('./../../assets/images/technicianpics.png'),
+  },
+  // Add more reviews as needed
+];
 
 export default function DetailsAndReviews({ navigation }) {
   return (
@@ -22,12 +43,10 @@ export default function DetailsAndReviews({ navigation }) {
             <Text style={styles.bookNow}>Mobile Solution</Text>
           </View>
         </View>
-        <View style={styles.headerLeft}>
-          <Icon name="globe" size={24} color="grey" style={styles.icon} />
-          <TouchableOpacity>
+        <TouchableOpacity style={styles.headerLeft} onPress={() => navigation.navigate('BookingForm')}>
+          <Icon name="globe" size={24} color="grey"  />
             <Text style={styles.bookNow}>Book Now</Text>
-          </TouchableOpacity>
-        </View>
+        </TouchableOpacity>
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -50,8 +69,8 @@ export default function DetailsAndReviews({ navigation }) {
             <Text style={styles.technicianRole}>Mobile Technician</Text>
           </View>
           <View style={styles.contactIcons}>
-            <Icon name="call-outline" size={24} color="#003366" style={styles.icon} />
-            <Icon name="chatbubble-outline" size={24} color="#003366" style={styles.icon} />
+            <MaterialIcons name="headset-mic" size={24} color="#003366"  style={styles.icon}/>
+            <Icon name="chatbox-ellipses-outline" size={24} color="#003366" style={styles.icon} />
           </View>
         </View>
 
@@ -59,35 +78,28 @@ export default function DetailsAndReviews({ navigation }) {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Reviews</Text>
 
-          {/* Review Card 1 */}
-          <View style={styles.reviewCard}>
-            <View style={styles.reviewHeader}>
-              <Text style={styles.reviewName}>Joel Yusuf</Text>
-              <Text style={styles.reviewDate}>Dec 14, 2024</Text>
+          {reviews.map((review) => (
+            <View key={review.id} style={styles.reviewCard}>
+              <Image
+                  source={review.image}
+                  style={styles.reviewImage}
+              />
+              <View style={styles.reviewHeader}>
+                <View style={{ flexDirection: 'row', gap: 10 }}>
+                  <Text style={styles.reviewName}>{review.name}</Text>
+                  <Text style={styles.reviewDate}>{review.date}</Text>
+                </View>
+                <Text style={styles.reviewText}>{review.text}</Text>
+              </View>
+              <TouchableOpacity>
+                <MaterialCommunityIcons name="dots-horizontal" size={25} color="#B5B5BE" />
+              </TouchableOpacity>
             </View>
-            <Text style={styles.reviewText}>Worem ipsum dolor sit amet, consectetur</Text>
-          </View>
-
-          {/* Review Card 2 */}
-          <View style={styles.reviewCard}>
-            <View style={styles.reviewHeader}>
-              <Text style={styles.reviewName}>Evlyn Okoro</Text>
-              <Text style={styles.reviewDate}>Dec 14, 2024</Text>
-            </View>
-            <Text style={styles.reviewText}>Worem ipsum dolor sit amet, consectetur</Text>
-          </View>
+          ))}
         </View>
 
-        {/* Graph Section */}
-        <View style={styles.graphSection}>
-          <Text style={styles.graphTitle}>Bookings Trend</Text>
-          <Image
-            source={solutionImage}
-            style={styles.graphImage}
-          />
-        </View>
+        <CustomerSatisfactionChart />
       </ScrollView>
-
     </View>
   );
 }
@@ -156,11 +168,12 @@ const styles = StyleSheet.create({
   technicianImage: {
     width: 50,
     height: 50,
-    // borderRadius: 6,
     marginRight: 15,
   },
   technicianInfo: {
     flex: 1,
+    gap: 5,
+    bottom: 5,
   },
   technicianName: {
     fontSize: 16,
@@ -172,32 +185,47 @@ const styles = StyleSheet.create({
   },
   contactIcons: {
     flexDirection: 'row',
-  },
+    justifyContent: 'space-around',
+    marginVertical: 10,
+    gap: 10,
+  }, 
   icon: {
-    marginHorizontal: 5,
+    padding: 10,
+    borderWidth: 1,
+    borderColor: '#003366',
+    borderStyle: 'dashed',
+    borderRadius: 50,
   },
   reviewCard: {
+    flexDirection: 'row',
     padding: 15,
     marginBottom: 15,
     borderWidth: 1,
     borderColor: '#ddd',
     borderRadius: 8,
   },
+  reviewImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 50,
+    marginRight: 15,
+  },
   reviewHeader: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    width: '75%',
   },
   reviewName: {
     fontSize: 16,
     fontWeight: 'bold',
+    color: '#171725'
   },
   reviewDate: {
     fontSize: 14,
-    color: '#666',
+    color: '#92929D',
   },
   reviewText: {
-    fontSize: 16,
+    fontSize: 14,
     marginTop: 10,
+    color: '#44444F',
   },
   graphSection: {
     padding: 20,
@@ -212,12 +240,5 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 100,
     resizeMode: 'contain',
-  },
-  bottomNav: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    padding: 15,
-    borderTopWidth: 1,
-    borderTopColor: '#ddd',
-  },
+  }
 });
