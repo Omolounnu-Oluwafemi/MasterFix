@@ -2,19 +2,32 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
+import BackButton from '../../components/BackButton';
+
+const solutionImage = require('./../../assets/images/Ellipse 3.png');
+const technicianImage = require('./../../assets/images/technicianpics.png');
 
 export default function DetailsAndReviews({ navigation }) {
   return (
     <View style={styles.container}>
+      <View style={styles.top}>
+        <BackButton text="Back" iconPosition="left" alignSelf="flex-start" onPress={() => navigation.goBack()} />
+      </View>
       {/* Header Section */}
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Icon name="arrow-back" size={24} color="#000" />
-        </TouchableOpacity>
-        <Text style={styles.headerTitle}>EasyFix.Ng</Text>
-        <TouchableOpacity>
-          <Text style={styles.bookNow}>Book Now</Text>
-        </TouchableOpacity>
+        <View style={styles.headerRight}>
+          <Image source={solutionImage} style={{ width: 80, height: 80 }} />
+          <View>
+            <Text style={styles.headerTitle}>EasyFix.Ng</Text>
+            <Text style={styles.bookNow}>Mobile Solution</Text>
+          </View>
+        </View>
+        <View style={styles.headerLeft}>
+          <Icon name="globe" size={24} color="grey" style={styles.icon} />
+          <TouchableOpacity>
+            <Text style={styles.bookNow}>Book Now</Text>
+          </TouchableOpacity>
+        </View>
       </View>
 
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -29,7 +42,7 @@ export default function DetailsAndReviews({ navigation }) {
         {/* Technician Details Section */}
         <View style={styles.technicianCard}>
           <Image
-            source={{ uri: 'https://via.placeholder.com/50' }}
+            source={technicianImage}
             style={styles.technicianImage}
           />
           <View style={styles.technicianInfo}>
@@ -69,7 +82,7 @@ export default function DetailsAndReviews({ navigation }) {
         <View style={styles.graphSection}>
           <Text style={styles.graphTitle}>Bookings Trend</Text>
           <Image
-            source={{ uri: 'https://via.placeholder.com/300x100' }}
+            source={solutionImage}
             style={styles.graphImage}
           />
         </View>
@@ -83,6 +96,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    // marginTop: '10%'
+  },
+  top: {
+    alignItems: 'flex-start',
+    padding: 10,
+    marginTop: '15%',
+    marginLeft: '5%'
   },
   header: {
     flexDirection: 'row',
@@ -92,25 +112,36 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#ddd',
   },
+  headerRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 20,
+  },
+  headerLeft: {
+    flexDirection: 'Column',
+    alignItems: 'center',
+  },
   headerTitle: {
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: '700',
+    color: '#193053',
   },
   bookNow: {
-    color: '#003366',
-    fontWeight: 'bold',
+    color: '#7C7C7F',
+    fontWeight: '400',
+    marginTop: 5,
   },
   section: {
     padding: 20,
   },
   sectionTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
+    fontSize: 13,
+    fontWeight: '700',
     marginBottom: 10,
   },
   description: {
-    fontSize: 16,
-    color: '#666',
+    fontSize: 13,
+    color: '#7C7C7F',
   },
   technicianCard: {
     flexDirection: 'row',
@@ -125,7 +156,7 @@ const styles = StyleSheet.create({
   technicianImage: {
     width: 50,
     height: 50,
-    borderRadius: 25,
+    // borderRadius: 6,
     marginRight: 15,
   },
   technicianInfo: {

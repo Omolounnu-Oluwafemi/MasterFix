@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, TextInput, ScrollView, SafeAreaView, StatusBar } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, TextInput, ScrollView, SafeAreaView, StatusBar, Image } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { FontAwesome, Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { useTheme } from "@react-navigation/native";
@@ -57,14 +57,14 @@ const HomeScreen = ({ navigation }) => {
         <FontAwesome name='angle-down' size={15} color={colors.text} style={styles.locationIcon} />
       </View>
       <View style={styles.icons}>
-        <TouchableOpacity onPress={() => navigation.navigate('SettingHome')}>
+        <TouchableOpacity>
           <MaterialIcons name="menu" size={30} color="black" />
         </TouchableOpacity>
         <View style={styles.rightIcons}>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Notification')}>
             <Ionicons name="notifications-outline" size={30} color="black" />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Schedules')}>
             <MaterialCommunityIcons name="clipboard-list-outline" size={30} color="black" />
           </TouchableOpacity>
         </View>
@@ -101,6 +101,11 @@ const HomeScreen = ({ navigation }) => {
       {/* Footer */}
       <Text style={styles.footerText}><Text style={styles.mail}>Mail:</Text> lorem.ipsom@mail.com</Text>
       </ScrollView>
+
+            {/* Floating Button */}
+      <TouchableOpacity style={styles.floatingButton} onPress={() => navigation.navigate('Chat')}>
+        <Image source={require('../../assets/images/chatImage.png')} style={styles.floatingButtonImage} />
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -184,7 +189,23 @@ const styles = StyleSheet.create({
   },
   mail: {
     fontWeight: '700',
-  }
+  },
+  floatingButton: {
+    position: 'absolute',
+    bottom: 20,
+    right: 10,
+    borderRadius: 30,
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    elevation: 10,
+  },
+  floatingButtonImage: {
+    width: 80,
+    height: 80,
+  },
 });
 
 export default HomeScreen;

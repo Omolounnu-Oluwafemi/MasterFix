@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import { useColorScheme, StyleSheet, TouchableWithoutFeedback, View } from "react-native";
+import { useColorScheme, StyleSheet } from "react-native";
 import { Ionicons, FontAwesome6 } from 'react-native-vector-icons';
 import { useTheme } from "@react-navigation/native";
 
@@ -12,9 +12,12 @@ import BookingForm from "../screens/Category/booking";
 import BookingSuccess from "../screens/Category/BookingSuccess";
 import DetailsAndReviews from "../screens/Category/DetailsAndReviews";
 import TabOneScreen from "../screens/TabOneScreen";
-import TabTwoScreen from "../screens/TabTwoScreen";
-import SettingHome from "../screens/SettingHome";
-import Profile from "../screens/Profile";
+import SettingHome from "../screens/Settings/SettingHome";
+import Profile from "../screens/Settings/Profile";
+import Notification from "../screens/Home/Notification";
+import TransactionScreen from "../screens/Settings/Transactions";
+import ScheduleScreen from "../screens/Home/Schedules";
+import ChatScreen from "../screens/Home/Chat";
 
 const BottomTab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -96,13 +99,23 @@ function HomeStack() {
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="SettingHome"
-        component={SettingHome}
+        name="Notification"
+        component={Notification}
         options={{ headerShown: false }}
       />
       <Stack.Screen
-        name="Profile"
-        component={Profile}
+        name="Transactions"
+        component={TransactionScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Schedules"
+        component={ScheduleScreen}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Chat"
+        component={ChatScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>
@@ -155,8 +168,13 @@ function SettingStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Settings"
-        component={TabTwoScreen}
+        name="SettingHome"
+        component={SettingHome}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

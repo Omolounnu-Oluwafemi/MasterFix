@@ -1,11 +1,9 @@
-import { View, Text, TouchableOpacity, StyleSheet, TextInput, ScrollView, SafeAreaView, StatusBar, Image } from 'react-native';
-import BackButton from '../components/BackButton';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, SafeAreaView, StatusBar, Image } from 'react-native';
+import BackButton from './../../components/BackButton';
 import React, { useState } from 'react';
-import { Ionicons } from 'react-native-vector-icons';
-import AnimatedInputField from '../components/AnimatedInputField';
-import { Button } from 'react-native-web';
+import AnimatedInputField from './../../components/AnimatedInputField';
 
-export default function Profile() {
+export default function Profile({ navigation}) {
     const [text, setText] = useState('');
 
     return (
@@ -16,7 +14,7 @@ export default function Profile() {
                     <Text style={styles.verifyText}>Profile</Text>
                 </View>
                 <View style={styles.imageBox}>
-                    <Image source={require('../assets/images/plumber-with-his-arms-crossed.png')} style={styles.image} />
+                    <Image source={require('./../../assets/images/plumber-with-his-arms-crossed.png')} style={styles.image} />
                 </View>
                 <TouchableOpacity style={styles.upload}>
                     <Text style={styles.uploadText}>Upload Photo</Text>
