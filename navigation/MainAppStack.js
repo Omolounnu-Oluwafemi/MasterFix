@@ -1,19 +1,22 @@
 import { createStackNavigator } from "@react-navigation/stack";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 import BottomTabNavigator from "./BottomTabNavigator";
 import NotFoundScreen from "../screens/NotFoundScreen";
+import SideBar from "./../components/SideBar"
 
-const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
 
 export default function MainAppStack() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="HomeScreen" component={BottomTabNavigator} />
-      <Stack.Screen
+    <Drawer.Navigator
+      drawerContent={(props) => <SideBar {...props} />}
+      screenOptions={{ headerShown: false }}>
+      <Drawer.Screen name="HomeScreen" component={BottomTabNavigator} />
+      <Drawer.Screen
         name="NotFound"
         component={NotFoundScreen}
         options={{ title: "Oops!" }}
       />
-      {/* Add more screens that belong to the main app */}
-    </Stack.Navigator>
+    </Drawer.Navigator>
   );
 }

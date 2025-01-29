@@ -9,6 +9,7 @@ import TopCategories from '../../components/Home/TopCategories';
 import VideoPlayer from '../../components/Home/VideoPlayer';
 import Testimonials from '../../components/Home/Testimonials';
 import BannerSwipper from '../../components/Home/BannerSwipper';
+// import Sidebar from '../../components/SideBar'; 
 
 const HomeScreen = ({ navigation }) => {
   const [firstName, setFirstName] = useState('');
@@ -45,6 +46,7 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
+       {/* <Sidebar /> */}
       <StatusBar
         barStyle="dark-content"
         backgroundColor="transparent"
@@ -57,7 +59,7 @@ const HomeScreen = ({ navigation }) => {
         <FontAwesome name='angle-down' size={15} color={colors.text} style={styles.locationIcon} />
       </View>
       <View style={styles.icons}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.openDrawer()}>
           <MaterialIcons name="menu" size={30} color="black" />
         </TouchableOpacity>
         <View style={styles.rightIcons}>

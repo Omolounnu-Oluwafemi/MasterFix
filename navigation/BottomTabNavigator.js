@@ -29,7 +29,7 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="HomeTab"
+      initialRouteName="Home"
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme].tint,
         headerShown: false,
@@ -132,7 +132,6 @@ function FavouriteStack() {
     </Stack.Navigator>
   );
 }
-
 function BookingsStack() {
   return (
     <Stack.Navigator>
